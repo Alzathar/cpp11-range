@@ -32,7 +32,7 @@ struct range_iter_base : std::iterator<std::input_iterator_tag, T> {
     }
 
     bool operator !=(range_iter_base const& other) const {
-        return not (*this == other);
+        return !(*this == other);
     }
 
 protected:
@@ -44,7 +44,7 @@ protected:
 template <typename T>
 struct range_proxy {
     struct iterator : detail::range_iter_base<T> {
-      iterator(T current) : detail::range_iter_base<T>(current) { }
+        iterator(T current) : detail::range_iter_base<T>(current) { }
     };
 
     struct step_range_proxy {
@@ -72,7 +72,7 @@ struct range_proxy {
             }
 
             bool operator !=(iter const& other) const {
-                return not (*this == other);
+                return !(*this == other);
             }
 
         private:
